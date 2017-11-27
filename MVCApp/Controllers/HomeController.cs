@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.ApplicationInsights;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,7 +25,21 @@ namespace MVCApp.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            TelemetryClient tc = new TelemetryClient();
+            Random rnd = new Random();
+            try
+            {
+                if (rnd.Next(1, 10) > 6)
+                {
+                    throw new Exception("Excepción aleatoria en Random");
+                }
+                ViewBag.Message = "Your contact page.";
+            }
+            catch(Exception ex)
+            {
+                ViewBag.Message = "Your contact page. Ocurrió un error... se generá un item en App Insights";
+                tc.TrackException(ex);
+            }
 
             return View();
         }
