@@ -10,6 +10,8 @@ namespace MVCApp.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "HomeController Trace code.";
+            System.Diagnostics.Trace.TraceInformation(string.Format("User goes through Index method");
             return View();
         }
 
