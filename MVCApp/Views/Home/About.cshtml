@@ -5,3 +5,29 @@
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+<div>
+    <table id="t01" border="1">
+        <thead>
+        <th>dateFormatted</th>
+        <th>summary</th>
+        <th>temperatureC</th>
+        </thead>
+        @foreach (var item in ViewBag.Weather)
+        {
+
+            <tr>
+                <td>
+                    @item.DateFormatted
+                </td>
+                <td>
+                    @item.Summary
+                </td>
+                <td>
+                    @item.TemperatureC
+                </td>
+            </tr>
+
+        }
+
+    </table>
+</div> 

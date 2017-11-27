@@ -1,7 +1,9 @@
-﻿using Microsoft.ApplicationInsights;
+﻿using InfoClima;
+using Microsoft.ApplicationInsights;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,10 +18,12 @@ namespace MVCApp.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public async Task<ActionResult> About()
         {
             ViewBag.Message = "Your application description page.";
-
+            InfoClimaClient clientAPI = new InfoClimaClient(new Uri("http://52.224.182.235"), new Microsoft.Rest.BasicAuthenticationCredentials());
+            var results = await clientAPI.ApiSampleDataWeatherForecastsGetAsync();
+            ViewBag.Weather = results;
             return View();
         }
 
