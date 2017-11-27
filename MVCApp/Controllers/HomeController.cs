@@ -43,6 +43,7 @@ namespace MVCApp.Controllers
             {
                 ViewBag.Message = "Your contact page. Ocurrió un error... se generá un item en App Insights";
                 tc.TrackException(ex);
+                throw;
             }
 
             return View();
