@@ -20,7 +20,7 @@ namespace MVCApp.Controllers
 
         public async Task<ActionResult> About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page. Nueva Versión";
             InfoClimaClient clientAPI = new InfoClimaClient(new Uri("http://52.224.182.235"), new Microsoft.Rest.BasicAuthenticationCredentials());
             var results = await clientAPI.ApiSampleDataWeatherForecastsGetAsync();
             ViewBag.Weather = results;
